@@ -37,12 +37,12 @@ if os.environ.get('REDIS_URL'):
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgres://saleor:saleor@localhost:5432/saleor',
+        default='postgres://saleor:saleor@165.227.11.217:15432/saleor',
         conn_max_age=600)}
 
 
-TIME_ZONE = 'America/Chicago'
-LANGUAGE_CODE = 'en-us'
+TIME_ZONE = 'Asia/Bishkek'
+LANGUAGE_CODE = 'ru'
 LOCALE_PATHS = [os.path.join(PROJECT_ROOT, 'locale')]
 USE_I18N = True
 USE_L10N = True
@@ -50,12 +50,7 @@ USE_TZ = True
 
 FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
-EMAIL_URL = os.environ.get('EMAIL_URL')
-SENDGRID_USERNAME = os.environ.get('SENDGRID_USERNAME')
-SENDGRID_PASSWORD = os.environ.get('SENDGRID_PASSWORD')
-if not EMAIL_URL and SENDGRID_USERNAME and SENDGRID_PASSWORD:
-    EMAIL_URL = 'smtp://%s:%s@smtp.sendgrid.net:587/?tls=True' % (
-        SENDGRID_USERNAME, SENDGRID_PASSWORD)
+EMAIL_URL = 'smtp://nur-k@list.ru:hayemaker@smtp.mail.ru:2525/?tls=True'
 email_config = dj_email_url.parse(EMAIL_URL or 'console://')
 
 EMAIL_FILE_PATH = email_config['EMAIL_FILE_PATH']
@@ -231,8 +226,8 @@ AUTH_USER_MODEL = 'account.User'
 
 LOGIN_URL = '/account/login/'
 
-DEFAULT_COUNTRY = 'US'
-DEFAULT_CURRENCY = 'USD'
+DEFAULT_COUNTRY = 'KG'
+DEFAULT_CURRENCY = 'KGS'
 AVAILABLE_CURRENCIES = [DEFAULT_CURRENCY]
 
 OPENEXCHANGERATES_API_KEY = os.environ.get('OPENEXCHANGERATES_API_KEY')
